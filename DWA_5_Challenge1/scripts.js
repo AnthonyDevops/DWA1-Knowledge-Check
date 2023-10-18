@@ -15,7 +15,7 @@ if(isNaN(divider) || parseFloat(divider) < 0){
 result.innerText = "Division not performed. Invalid number provided. Try again";
   }
   if (isNaN(dividend) || isNaN(divider)) {
-    result.innerText = ("Something critical went wrong. Please reload the page.");
+    alert("Something critical went wrong. Please reload the page.");
   } else {
 result.innerText = parseInt(dividend / divider);
   }
