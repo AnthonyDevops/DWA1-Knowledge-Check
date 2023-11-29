@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tally App</title>
+    <!-- Include Shoelace styles -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@latest/dist/shoelace/shoelace.css">
+    <!-- Include Shoelace web components library -->
+    <script type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@latest/dist/shoelace/shoelace.esm.js"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .counter sl-badge {
+            font-size: 150px;
+            /* Enlarge the counter badge */
+        }
+
+        .button-group sl-button {
+            flex: 1;
+            font-size: 1.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="counter">
+            <sl-badge variant = "danger" id="counterBadge" pill pulse>0</sl-badge>
+        </div>
+
+        <sl-button-group class="button-group">
+            <sl-button size="large" id="addBtn">Add</sl-button>
+            <sl-button size="large" id="subtractBtn">Subtract</sl-button>
+            <sl-button size="large" id="resetBtn">Reset</sl-button>
+        </sl-button-group>
+    </div>
+
+    <script>
+        const counterBadge = document.getElementById('counterBadge');
+        const addBtn = document.getElementById('addBtn');
+        const subtractBtn = document.getElementById('subtractBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        let counterValue = 0;
+
+        function updateCounterDisplay() {
+            counterBadge.innerText = counterValue.toString();
+        }
+
+        function resetCounter() {
+            counterValue = 0;
+            updateCounterDisplay();
+            alert('The counter has been reset.');
+        }
+
+        addBtn.addEventListener('click', () => {
+            counterValue += 1;
+            updateCounterDisplay();
+        });
+
+        subtractBtn.addEventListener('click', () => {
+            if (counterValue > 0) {
+                counterValue -= 1;
+                updateCounterDisplay();
+            }
+        });
+
+        resetBtn.addEventListener('click', resetCounter);
+    </script>
+</body>
+
+</html>
